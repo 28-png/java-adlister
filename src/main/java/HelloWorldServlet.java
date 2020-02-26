@@ -10,25 +10,21 @@ import static java.lang.Integer.parseInt;
 
 @WebServlet(name = "HelloWorldServlet", urlPatterns = "/hello-world")
 
-
-
 public class HelloWorldServlet extends HttpServlet {
-    Integer currentPage;
-    String sortBy;
+    String name;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-            if(sortBy != null) {
-                sortBy = req.getParameter("sort");
-            }
-
-            if(currentPage != null) {
-         currentPage = parseInt(req.getParameter("page"));
-            }
-
         res.setContentType("text/html");
-        PrintWriter out = res.getWriter();
-         out.println("<h1>Hello, World!</h1>" +
-                 "Hello " + sortBy + "!" + "<br>" +
-                 "Page: " + currentPage);
+           PrintWriter out = res.getWriter();
+            name = req.getParameter("name");
+            if(name != null) {
+                out.println("<h1>Hello, World!</h1>" +
+                        "Hello " + name + "!" + "<br>");
+            } else {
+               out.println("<h1>Hello, World!</h1>" + "<br>"
+                            + "Hello Unnamed" + "<br>");
+            }
+
     }
+
 }
