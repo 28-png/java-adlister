@@ -19,7 +19,7 @@ public class HelloWorldServlet extends HttpServlet {
             name = req.getParameter("name");
             if(name != null) {
                 out.println("<h1>Hello, World!</h1>" +
-                        "Hello " + name + "!" + "<br>");
+                       "Hello " + name + "!" + "<br>");
             } else {
                out.println("<h1>Hello, World!</h1>" + "<br>"
                             + "Hello Unnamed" + "<br>");
