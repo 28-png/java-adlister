@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+<jsp:include page="partials/navbar.jsp"/>
 <h3>congrats!</h3>
 </body>
 </html>

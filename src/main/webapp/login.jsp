@@ -17,7 +17,7 @@
         <c:redirect url="/profile.jsp"/>
     </c:if>
 
-
+    <jsp:include page="partials/navbar.jsp"/>
 
 
 <form method="post" action="login.jsp" style="margin: 5px">
