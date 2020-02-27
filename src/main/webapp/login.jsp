@@ -13,21 +13,18 @@
 </head>
 <body>
 
-
-<c:choose>
-    <c:when test="${pageContext.request.isUserInRole('admin')}">
+    <c:if test="${param.username.equals('admin') && param.password.equals('password')}">
         <c:redirect url="/profile.jsp"/>
-    </c:when>
+    </c:if>
 
-</c:choose>
 
 
 
 <form method="post" action="login.jsp" style="margin: 5px">
     <label for="username" style="margin: 2px">Username</label>
-    <input id="username" type="text" style="margin:  2px" placeholder="Username"> <br>
+    <input id="username" name="username" type="text" style="margin:  2px" placeholder="Username"> <br>
     <label for="password" style="margin: 2px">Password</label>
-    <input id="password" type="password" style="margin: 2px" placeholder="Password">
+    <input id="password" type="password" name="password" style="margin: 2px" placeholder="Password">
     <button type="submit">submit</button>
 </form>
 </body>
