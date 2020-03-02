@@ -1,17 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%--<%--%>
-<%--    if (request.getMethod().equalsIgnoreCase("post")) {--%>
-<%--        String username = request.getParameter("username");--%>
-<%--        String password = request.getParameter("password");--%>
-<%--        if (username.equals("admin") && password.equals("password")) {--%>
-<%--            response.sendRedirect("/profile");--%>
-<%--        }--%>
-<%--    }--%>
-<%--%>--%>
-
-<%--<%@ page extends="LoginServlet"%>--%>
 <html>
 <head>
     <jsp:include page="partials/head.jsp">
