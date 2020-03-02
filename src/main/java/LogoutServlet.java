@@ -6,16 +6,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "ViewProfileServlet", urlPatterns = "/profile")
-public class ViewProfileServlet extends HttpServlet {
-
+@WebServlet(name = "LogoutServlet", urlPatterns = "/logout")
+public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession user = request.getSession();
-        if ((!((boolean) user.getAttribute("validAttempt")))) {
-            response.sendRedirect("/login");
-            return;
-        }
-        
-       request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+    HttpSession user = request.getSession();
+    user.removeAttribute("user");
+    user.invalidate();
+    response.sendRedirect("/login");
+
     }
+
 }
