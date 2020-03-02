@@ -1,4 +1,9 @@
 *.iml
 target/
 .idea/
+<<<<<<< HEAD
+
+!.idea/
+=======
 Config.java
+>>>>>>> 89bdba8abb4eeb5dd0a05ce593729f08864bc4d4
