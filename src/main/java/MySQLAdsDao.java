@@ -69,27 +69,5 @@ public class MySQLAdsDao implements Ads {
         return lastInsertedId;
     }
 
-    public static void main(String[] args) {
-        Config config = new Config();
-        // testing all method
-        Ads adsDao = new MySQLAdsDao(config);
-        List<Ad> ads = adsDao.all();
-        for (Ad ad : ads) {
-            System.out.println(ad);
-        }
-
-        // test insert
-        Ad adToInsert = new Ad(
-                1,
-                "gum",
-                "it is chewable"
-        );
-
-        long lastInsertedId = adsDao.insert(adToInsert);
-       System.out.println(lastInsertedId);
-
-    }
-
-
 
 }
