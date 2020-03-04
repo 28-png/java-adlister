@@ -19,6 +19,7 @@ public class MySQLAdsDao implements Ads {
 
     }
 
+
     @Override
    public List<Ad> all() {
     List<Ad> output = new ArrayList<>();
