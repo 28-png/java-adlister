@@ -5,8 +5,7 @@ import com.mysql.cj.jdbc.Driver;
 
 public class MySQLAdsDao implements Ads {
     private Connection connection;
-
-     public MySQLAdsDao(Config config)  {
+    public MySQLAdsDao(Config config)  {
          try {
              DriverManager.registerDriver(new Driver());
              this.connection = DriverManager.getConnection(
@@ -48,7 +47,25 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Long insert(Ad ad) {
-        return null;
+        Long lastInsertedId = 0L;
+        String query = String.format(
+                "INSERT INTO ads (user_id, title, description) VALUES (%d, '%s', '%s')",
+                ad.getUserId(),
+                ad.getTitle(),
+                ad.getDescription()
+        );
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query, statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = statement.getGeneratedKeys();
+            if(rs.next()) {
+                lastInsertedId = rs.getLong(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lastInsertedId;
     }
 
 
