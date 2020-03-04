@@ -32,7 +32,7 @@ public class MySQLAdsDao implements Ads {
                 new Ad(
                      rs.getLong("id"),
                         rs.getLong("user_id"),
-                        rs.getString("title"),
+                       rs.getString("title"),
                         rs.getString("description")
                 )
         );
@@ -58,7 +58,7 @@ public class MySQLAdsDao implements Ads {
 
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate(query, statement.RETURN_GENERATED_KEYS);
+            statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = statement.getGeneratedKeys();
             if(rs.next()) {
                 lastInsertedId = rs.getLong(1);
@@ -67,6 +67,27 @@ public class MySQLAdsDao implements Ads {
             e.printStackTrace();
         }
         return lastInsertedId;
+    }
+
+    public static void main(String[] args) {
+        Config config = new Config();
+        // testing all method
+        Ads adsDao = new MySQLAdsDao(config);
+        List<Ad> ads = adsDao.all();
+        for (Ad ad : ads) {
+            System.out.println(ad);
+        }
+
+        // test insert
+        Ad adToInsert = new Ad(
+                1,
+                "gum",
+                "it is chewable"
+        );
+
+        long lastInsertedId = adsDao.insert(adToInsert);
+       System.out.println(lastInsertedId);
+
     }
 
 
