@@ -7,7 +7,7 @@ public class ListAdsDao implements Ads {
     public List<Ad> all() {
         if (ads == null) {
             ads = generateAds();
-        }
+       }
         return ads;
     }
 
