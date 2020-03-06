@@ -33,6 +33,7 @@ public class RegisterServlet extends HttpServlet {
         // TODO: if a user was successfully created, send them to their profile
         User user = new User(username, email, password);
         DaoFactory.getUsersDao().insert(user);
-        response.sendRedirect("/profile");
+        request.getSession().setAttribute("user", username);
+        response.sendRedirect("/login");
     }
 }
