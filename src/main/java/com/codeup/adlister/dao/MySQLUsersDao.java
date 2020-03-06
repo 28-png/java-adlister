@@ -1,13 +1,10 @@
 package com.codeup.adlister.dao;
-
-import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
-
 import java.sql.*;
 
 public class MySQLUsersDao implements Users {
-    private Connection connection = null;
+    private Connection connection;
 
     public MySQLUsersDao(Config config) {
         try {
@@ -46,6 +43,7 @@ public class MySQLUsersDao implements Users {
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getPassword());
+            statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
             rs.next();
             return rs.getLong(1);
